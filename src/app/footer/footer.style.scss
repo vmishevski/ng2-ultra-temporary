@@ -1,0 +1,9 @@
+@import '../../assets/scss/';
+
+.ult-footer {
+  overflow: hidden;
+  background: theme(footer);
+  color: theme(footer, color);
+  height: layout(footer, height);
+  line-height: layout(footer, height);
+}

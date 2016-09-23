@@ -1,0 +1,14 @@
+$ult-font-primary:   'Open Sans', sans-serif        !default;
+$ult-font-secondary: 'Roboto Condensed', sans-serif !default;
+
+@include set(typefaces, (
+  primary:   ($ult-font-primary),
+  secondary: ($ult-font-secondary)
+));
+
+$font-family-base: typeface(primary);
+$headings-font-family: typeface(secondary);
+
+@function font($stack: primary) {
+  @return typeface($stack);
+};

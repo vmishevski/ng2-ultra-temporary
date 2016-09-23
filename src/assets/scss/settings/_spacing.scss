@@ -1,0 +1,13 @@
+$grid-gutter-width: 20px;
+
+$spacing: (
+  gutter: (
+    half: $grid-gutter-width / 2,
+    base: $grid-gutter-width,
+    double: $grid-gutter-width * 2
+  )
+);
+
+@function spacing($module: gutter, $scale: base) {
+  @return map-get(map-get($spacing, $module), $scale);
+}

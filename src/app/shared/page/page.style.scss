@@ -1,0 +1,22 @@
+@import '../../../assets/scss/';
+
+:host {
+  @include cf();
+  display: block;
+}
+
+.ult-page {
+  background: theme(page);
+  transition: .2s max-width ease-in;
+  padding-top: spacing(gutter, half);
+
+  &-full {
+    max-width: 100%;
+    background: transparent;
+  }
+  &-compact {
+    max-width: layout(container);
+    margin-top: spacing(gutter, half);
+    margin-bottom: spacing(gutter, half);
+  }
+}

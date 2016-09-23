@@ -1,0 +1,7 @@
+@function image($name) {
+  @return url('/assets/img/#{$name}');
+};
+
+@function bg($name, $ext: 'jpg') {
+  @return image('bg-#{$name}.#{$ext}');
+};

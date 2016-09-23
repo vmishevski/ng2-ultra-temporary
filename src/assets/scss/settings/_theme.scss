@@ -1,0 +1,34 @@
+$ult-main-background:    palette(dark base)    !default;
+$ult-page-background:    palette(light base)   !default;
+$ult-header-background:  palette(dark primary) !default;
+$ult-heading-background: palette(light base)   !default;
+$ult-sidebar-background: palette(dark primary) !default;
+$ult-footer-background:  palette(dark primary) !default;
+$ult-footer-color:       palette(text primary) !default;
+
+
+$theme: (
+  main: (
+    background: $ult-main-background
+  ),
+  page: (
+    background: $ult-page-background
+  ),
+  header: (
+    background: $ult-header-background
+  ),
+  heading: (
+    background: $ult-heading-background
+  ),
+  sidebar: (
+    background: $ult-sidebar-background
+  ),
+  footer: (
+    background: $ult-footer-background,
+    color: $ult-footer-color
+  )
+);
+
+@function theme($component, $property: background) {
+  @return map-get(map-get($theme, $component), $property);
+}

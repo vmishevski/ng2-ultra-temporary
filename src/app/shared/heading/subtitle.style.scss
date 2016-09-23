@@ -1,0 +1,11 @@
+@import '../../../assets/scss/';
+
+.ult-heading-subtitle {
+  display: block;
+  font-size: .6em;
+  border-top: 1px dashed darker(base);
+  margin-top: spacing(gutter, half) / 2;
+  padding-top: spacing(gutter, half);
+  text-transform: none;
+  color: palette(light text);
+}

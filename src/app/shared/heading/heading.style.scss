@@ -1,0 +1,22 @@
+@import '../../../assets/scss/';
+
+.ult-heading {
+  @include cf;
+  text-transform: uppercase;
+  background: theme(heading);
+  padding: spacing(gutter, half);
+  display: flex;
+  align-items: center;
+
+  &-title {
+    margin: 0;
+    font-size: 2em;
+    float: left;
+    flex-grow: 1;
+    margin-right: spacing(gutter, half);
+  }
+
+  &-actions {
+    float: right;
+  }
+}

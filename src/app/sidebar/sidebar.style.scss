@@ -1,0 +1,79 @@
+@import '../../assets/scss/';
+
+.ult-sidebar {
+  float: left;
+  height: 100%;
+  transition: .3s width ease-in,
+              .3s transform ease-in;
+  width: layout(sidebar, width);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1032;
+
+  &.ult-sidebar-closed {
+    transform: translateX(-#{layout(sidebar, width)});
+  }
+
+  &-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1031;
+    background: rgba(palette(dark primary), .5);
+
+    @include query(md) {
+      display: none;
+    }
+  }
+
+  @include query(md) {
+    position: static;
+
+    &.ult-sidebar-closed {
+      width: layout(sidebar, closed);
+      transform: none;
+    }
+  }
+
+  &-rail {
+    height: 100%;
+    width: inherit;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: theme(sidebar);
+    overflow-x: hidden;
+    overflow-y: visible;
+    @include scrollbar();
+  }
+  &-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.ult-logo {
+  max-width: 100%;
+  display: block;
+  text-align: center;
+  padding: 1em 0;
+  transition: .3s padding ease-in;
+
+  .ult-sidebar-open & {
+    padding: 2.5em 0;
+  }
+
+  &-img {
+    width: 100px;
+    transition: .3s width ease-in;
+
+    .ult-sidebar-open & {
+      width: $ult-sidebar-width - 40px;
+    }
+  }
+}

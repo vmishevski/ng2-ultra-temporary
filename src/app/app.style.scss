@@ -1,0 +1,24 @@
+@import '../assets/scss/';
+
+html,
+body,
+.ult {
+  height: 100%;
+}
+
+.ult-main {
+  overflow: hidden;
+  position: relative;
+  padding-top: $ult-header-height;
+  background: theme(main);
+  // @include responsive(background-color, (
+  //   sm: palette(brand),
+  //   md: palette(primary),
+  //   lg: palette(special)
+  // ));
+}
+
+.ult-container {
+  $page-height-offset: layout(footer, height) + layout(header, height);
+  min-height: calc(100vh - #{$page-height-offset});
+}

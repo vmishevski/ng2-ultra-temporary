@@ -1,0 +1,48 @@
+<nav class="ult-nav navbar navbar-fixed-top navbar-inverse">
+ <ul class="ult-nav-list pull-left nav navbar-nav">
+  <li class="ult-nav-item">
+    <a class="ult-nav-link ult-nav-toggle" (click)="toggleSidebar()">
+      <span class="ult-nav-toggle-lines">
+      </span>
+    </a>
+  </li>
+  <li class="ult-nav-item">
+    <a class="ult-nav-link" [routerLink]=" ['./home'] ">
+      Home
+    </a>
+  </li>
+  <li class="ult-nav-item">
+    <a class="ult-nav-link" [routerLink]=" ['./detail'] ">
+      Detail
+    </a>
+  </li>
+  <li class="ult-nav-item">
+    <a class="ult-nav-link" [routerLink]=" ['./users'] ">
+      Users
+    </a>
+  </li>
+  <li class="ult-nav-item">
+    <a class="ult-nav-link" [routerLink]=" ['./about'] ">
+      About
+    </a>
+  </li>
+ </ul>
+ <ul class="ult-nav-list nav navbar-nav pull-right">
+   <li class="ult-nav-item">
+     <a class="ult-nav-link" ult-page-size="compact">Compact</a>
+   </li>
+   <li class="ult-nav-item">
+     <a class="ult-nav-link" ult-page-size="full">Full</a>
+   </li>
+   <li dropdown class="ult-nav-item">
+     <a class="ult-nav-link" dropdownToggle>
+       Click me for a dropdown, yo!
+     </a>
+     <ul class="dropdown-menu" dropdownMenu>
+       <li>
+         <a class="dropdown-item" href="#">Test</a>
+       </li>
+     </ul>
+   </li>
+ </ul>
+</nav>

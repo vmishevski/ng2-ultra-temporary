@@ -1,0 +1,25 @@
+$ult-header-height:   50px   !default;
+$ult-footer-height:   50px   !default;
+$ult-sidebar-width:   200px  !default;
+$ult-sidebar-closed:  50px   !default;
+$ult-container-width: 1070px !default;
+
+$layout: (
+  header: (
+    height: $ult-header-height
+  ),
+  sidebar: (
+    width: $ult-sidebar-width,
+    closed: $ult-sidebar-closed
+  ),
+  container: (
+    width: $ult-container-width
+  ),
+  footer: (
+    height: $ult-footer-height
+  )
+);
+
+@function layout($component, $property: width) {
+  @return map-get(map-get($layout, $component), $property);
+}

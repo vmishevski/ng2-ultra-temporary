@@ -1,0 +1,69 @@
+$colors: (
+  brand: #38b3a0,
+  primary: #555,
+  base: #fff,
+  secondary: #f7f9fa,
+  text: #282e3a,
+  link: #28849e,
+  success: #30ba67,
+  danger: #ea494b,
+  neutral: #f5f7fa,
+  warning: #ecc437,
+  info: #6bc1da,
+  special: #7d1449
+);
+
+$colors-text: (
+  brand: #fff,
+  primary: #fff,
+  base: #222,
+  secondary: #222,
+  text: #fff,
+  link: #fff,
+  success: #fff,
+  danger: #fff,
+  neutral: #222,
+  warning: #222,
+  info: #222,
+  special: #fff
+);
+
+$color-threshold: 15%;
+
+@function color($c) {
+  @return map-get($colors, $c);
+}
+
+@function color-text($c) {
+  @return map-get($colors-text, $c);
+}
+
+@function darker($c) {
+  @return darken(color($c), $color-threshold);
+}
+
+@function lighter($c) {
+  @return lighten(color($c), $color-threshold);
+}
+
+
+@each $name, $color in $colors {
+  @include set(palettes, $name, (
+    light: lighter($name),
+    base:  color($name),
+    dark:  darker($name),
+    text:  color-text($name)
+  ));
+}
+
+$brand-primary: palette(brand);
+$brand-success: palette(success);
+$brand-info:    palette(info);
+$brand-warning: palette(warning);
+$brand-danger:  palette(danger);
+
+$body-bg:    transparent; // palette(base);
+$text-color: palette(text);
+
+$link-color:       palette(brand);
+$link-hover-color: palette(dark brand);
