@@ -9,7 +9,7 @@
  * karma.conf.js with the karma-webpack plugin. This is the entry
  * file for webpack test. Just like webpack will create a bundle.js
  * file for our client, when we run test, it will compile and bundle them
- * all here! Crazy huh. So we need to do some setup
+ * all here! Crazy h uh. So we need to do some setup
  */
 Error.stackTraceLimit = Infinity;
 

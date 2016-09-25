@@ -9,6 +9,10 @@ const helpers = require('./helpers');
  */
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// multiple extract instances
+var extractSass = new ExtractTextPlugin('assets/css/[name].css');
 
 /**
  * Webpack Constants
@@ -123,6 +127,38 @@ module.exports = {
         exclude: [/\.e2e\.ts$/]
       },
 
+      {
+        test: /\.style\.scss$/,
+        loaders: [
+          'to-string-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
+
+      {
+        test: /\.style\.css$/,
+        loaders: [
+          'to-string-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+
+      {
+        test: /assets(.*)\.scss$/,
+        loaders: [
+          extractSass.extract({
+            loader: 'style-loader',
+            fallbackLoader: 'css-loader'
+          }),
+          'raw-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
+
       /**
        * Json loader support for *.json files.
        *
@@ -161,14 +197,14 @@ module.exports = {
        *
        * See: https://github.com/deepsweet/istanbul-instrumenter-loader
        */
-      {
-        test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
-        include: helpers.root('src'),
-        exclude: [
-          /\.(e2e|spec)\.ts$/,
-          /node_modules/
-        ]
-      }
+      // {
+      //   test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
+      //   include: helpers.root('src'),
+      //   exclude: [
+      //     /\.(e2e|spec)\.ts$/,
+      //     /node_modules/
+      //   ]
+      // }
 
     ]
   },
@@ -196,10 +232,11 @@ module.exports = {
       'process.env': {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV),
-        'HMR': false,
+        'HMR': false
       }
     }),
 
+    extractSass
 
   ],
 

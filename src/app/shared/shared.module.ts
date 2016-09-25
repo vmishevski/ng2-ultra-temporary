@@ -12,6 +12,19 @@ import { Heading, HeadingTitle, HeadingSubtitle, HeadingActions } from './headin
 import { Page, PageSize } from './page';
 import { RestService } from './rest/rest.service';
 import { HttpInterceptor } from './http/http.interceptor';
+import {
+  PermissionGuard, AuthorizationService, Authenticator, AuthenticateGuard,
+  RestoreUserGuard
+} from './access-control';
+import { LoginComponent } from './access-control/login.component';
+
+export const ACCESS_CONTROL_PROVIDERS = [
+  Authenticator,
+  AuthorizationService,
+  PermissionGuard,
+  AuthenticateGuard,
+  RestoreUserGuard
+];
 
 @NgModule({
   declarations: [
@@ -20,7 +33,8 @@ import { HttpInterceptor } from './http/http.interceptor';
     HeadingSubtitle,
     HeadingActions,
     Page,
-    PageSize
+    PageSize,
+    LoginComponent
   ],
   exports: [
     CommonModule,
@@ -34,9 +48,11 @@ import { HttpInterceptor } from './http/http.interceptor';
     HeadingSubtitle,
     HeadingActions,
     Page,
-    PageSize
+    PageSize,
+    LoginComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     HttpModule,
     TooltipModule,
@@ -52,9 +68,13 @@ import { HttpInterceptor } from './http/http.interceptor';
       deps: [XHRBackend, RequestOptions]
     },
     LayoutManager,
-    RestService
+    RestService,
+    Authenticator,
+    AuthorizationService,
+    ...ACCESS_CONTROL_PROVIDERS
   ]
 })
 export class SharedModule {
-  constructor() {}
+  constructor() {
+  }
 }

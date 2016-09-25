@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { AppState } from './app.service';
 import { LayoutManager } from './layout';
 
@@ -39,7 +39,7 @@ require('../assets/scss/main.scss');
     LayoutManager
   ]
 })
-export class App {
+export class App implements OnInit{
   sidebarOpen: boolean;
   breakpoint: string;
 
