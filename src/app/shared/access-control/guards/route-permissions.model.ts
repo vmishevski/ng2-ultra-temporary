@@ -1,4 +1,4 @@
 export interface RoutePermissionsConfig {
-  only: string[] | string;
-  except:  string[] | string;
+  only?: string[] | string;
+  except?:  string[] | string;
 }
